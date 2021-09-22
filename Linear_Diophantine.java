@@ -1,7 +1,7 @@
 /*
  * @author : Shayan Dasgupta
  * 
- * Aim : Finding all the solutions to a linear diophantine equation using congruences
+ * Finding all the solutions to a linear diophantine equation using congruences
  */
 
 import java.util.*;
@@ -17,46 +17,42 @@ class Linear_Diophantine
         
         System.out.println("ax + by = c\nEnter the values for");
         System.out.print("a = ");
-		a = sc.nextInt();
-		System.out.print("b = ");
-		b = sc.nextInt();
-		System.out.print("c = ");
-		c = sc.nextInt();
+	a = sc.nextInt();
+	System.out.print("b = ");
+	b = sc.nextInt();
+	System.out.print("c = ");
+	c = sc.nextInt();
 		
-		double startTime = System.nanoTime();
+	int d = gcd.Euclidean_Algorithm(a, b);
 		
-		int d = gcd.Euclidean_Algorithm(a, b);
-		
-		if(c%d == 0)
-		{
-			a /= d; 
-			b /= d; 
-			c /= d;
+	if(c%d == 0)
+	{
+		a /= d; 
+		b /= d; 
+		c /= d;
 
-			int x = cong.Congruence(a, c, b);
-			int y = (c-a*x)/b;
-			System.out.println("The given Linear Diophantine equation has infinite solutions in the form");
-			display(x,y);
-		}
-		else
+		int x = cong.Congruence(a, c, b);
+		int y = (c-a*x)/b;
+		System.out.println("The given Linear Diophantine equation has infinite solutions in the form");
+		display(x,y);
+	}
+	else
 		System.out.println("The given Linear Diophantine equation has 0 solutions.");
 		
-		double endTime = System.nanoTime();
-	    System.out.println("\nTook "+((endTime - startTime)/Math.pow(10,9))+" seconds.");
-	    while(true)
-	        {
-	            System.out.println("Do you want to find the solution of more linear diophantine equations? \nPress 1 for 'Yes' or 0 'No'.");
-	            int ch = sc.nextInt();
-	            switch(ch)
-	            {
-	            case 1: main(null);
-	            		break;
+	while(true)
+	{
+		System.out.println("Do you want to find the solution of more linear diophantine equations? \nPress 1 for 'Yes' or 0 'No'.");
+		int ch = sc.nextInt();
+	        switch(ch)
+		{
+                    case 1: main(null);
+	            break;
 	            case 0: System.exit(0);
-	            		break;
+	            break;
 	            default: System.out.println("Invalid input.");
-	            }
-	        }	
-    	}
+	        }
+	 }	
+    }
    
     static void display(int X, int Y)
     {

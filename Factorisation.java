@@ -1,10 +1,9 @@
 /*
  * @author : Shayan Dasgupta
  * 
- * Aim : Trying to find an algorithm that gives us the the unique prime factorisation of an integer in the smallest time possible.
+ * Gives us the unique prime factorisation of an integer.
  */
 import java.io.*;
-// import java.util.Arrays;
 class Factorisation
 
 {
@@ -15,8 +14,6 @@ class Factorisation
         System.out.print("Enter number:");
         int n = Integer.parseInt(br.readLine());
         System.out.print(n+" = ");
-
-        double startTime = System.nanoTime();
 
         int copy = n;
         if(n == 0)
@@ -39,9 +36,6 @@ class Factorisation
             }
         }
 
-        double endTime = System.nanoTime();
-        System.out.println("\nTook "+((endTime - startTime)/Math.pow(10,9))+" seconds.");
-
         while(true)
         {
             System.out.println("Do you want to factorize another number? \nPress 1 for 'Yes' or 0 'No'.");
@@ -59,11 +53,6 @@ class Factorisation
 
     static boolean isprime(int a)
     {
-        /* this loop checks if a number is prime or not by seeing how many factors that number has;
-         * if it is more than 0(excluding 1 and itself; which is why is starts from 2) then that number is a composite;
-         * it only runs till the square-root of that number since the smallest factor of any number will be less than or equal to its square-root;
-         * this gives us a factor of the number(if it has any) in the quickest way(at least for now and from what I know).
-         */
         for(int i = 2; i <= Math.sqrt(a); i++)
         {
             if(a%i == 0)
@@ -93,7 +82,8 @@ class Factorisation
         }
         return cnt;
     }
-
+    
+    //this method for a presentable output
     static void display(int i, int pow,  double num)
     {
         if (i == num)
