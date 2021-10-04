@@ -4,39 +4,25 @@
  * Finds the GCD of two numbers using the Euclidean Algorithm.
  */
 
-import java.io.*;
+import java.util.*;
 
 class GCD
 {
-    public static void main(String args[]) throws IOException
-    {   
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.println("Enter the two numbers whose GCD you want to find :");
-        int a =Integer.parseInt(br.readLine());
-        int b =Integer.parseInt(br.readLine());
+    static Scanner sc = new Scanner();
+    public static void main(String[] args) 
+    {
+        driver();
         
-        // Program doesn't work when b<a
-        if(b<a)
-        {
-        	a = a + b;
-        	b = a - b;
-        	a = a - b;
-        }
-        
-        print(a,b,Euclidean_Algorithm(a,b));
-
         while(true)
         {
             System.out.println("Do you want to find the GCD of two more numbers? \nPress 1 for 'Yes' or 0 'No'.");
-            int ch = Integer.parseInt(br.readLine());
+            int ch = sc.nextInt();
+            
             switch(ch)
             {
-            case 1: main(null);
-            		break;
-            case 0: System.exit(0);
-            		break;
-            default: System.out.println("Invalid input.");
+                    case 1 -> driver();
+                    case 0 -> System.exit(0);
+                    default -> System.out.println("Invalid input.");
             }
         }
     }
@@ -52,8 +38,17 @@ class GCD
     static void print(int a, int b, int rt)
     {
         if(rt == 0)
-            System.out.println("("+a+","+b+") = "+Math.max(Math.abs(a), Math.abs(b)));
+            System.out.println("("+a+","+b+") = " + Math.abs(a));
         else
-            System.out.println("("+a+","+b+") = " + rt);//(go check notebook)
+            System.out.println("("+a+","+b+") = " + rt);
+    }
+    
+    static void driver()
+    {
+        System.out.println("Enter the two numbers whose GCD you want to find :");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        
+        print(a,b,Euclidean_Algorithm(a,b));
     }
 }

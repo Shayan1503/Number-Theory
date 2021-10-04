@@ -3,46 +3,21 @@
  * 
  * Gives us the unique prime factorisation of an integer.
  */
-import java.io.*;
+import java.util.*;
 class Factorisation
-
 {
-    public static void main (String args[])throws IOException
+    static Scanner sc = new Scanner(System.in);
+    public static void main (String[] args)
     {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.print("Enter number:");
-        int n = Integer.parseInt(br.readLine());
-        System.out.print(n+" = ");
-
-        int copy = n;
-        if(n == 0)
-            System.out.println("1*0");
-        else
-        {
-            System.out.print("1*");
-            for(int i = 2; i <= copy; i++)
-            {
-                if(isprime(i))//method prime returns true if 'i' is a prime number
-                {
-                    int pow = check(copy,i);//method check gets the power of that prime
-                    if(pow!=0)
-                    {
-                        display(i,pow,copy);
-                    }
-                    //this prime needs to be removed from the original number in order to find the other factors
-                    copy = (int)(copy/Math.pow(i,pow));
-                }
-            }
-        }
+        driver();
 
         while(true)
         {
             System.out.println("Do you want to factorize another number? \nPress 1 for 'Yes' or 0 'No'.");
-            int ch = Integer.parseInt(br.readLine());
+            int ch = sc.nextInt();
             switch(ch)
             {
-            case 1: main(null);
+            case 1: driver();
             		break;
             case 0: System.exit(0);
             		break;
@@ -103,6 +78,34 @@ class Factorisation
             else
             {
                 System.out.print("("+i+"^"+pow+")*");
+            }
+        }
+    }
+    
+    static void driver()
+    {
+        System.out.print("Enter number:");
+        int n = sc.nextInt();
+        System.out.print(n+" = ");
+
+        int copy = n;
+        if(n == 0)
+            System.out.println("1*0");
+        else
+        {
+            System.out.print("1*");
+            for(int i = 2; i <= copy; i++)
+            {
+                if(isprime(i))//method prime returns true if 'i' is a prime number
+                {
+                    int pow = check(copy,i);//method check gets the power of that prime
+                    if(pow!=0)
+                    {
+                        display(i,pow,copy);
+                    }
+                    //this prime needs to be removed from the original number in order to find the other factors
+                    copy = (int)(copy/Math.pow(i,pow));
+                }
             }
         }
     }
