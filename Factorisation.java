@@ -6,7 +6,7 @@
 import java.util.*;
 class Factorisation
 {
-    static Scanner sc = new Scanner();
+    static Scanner sc = new Scanner(System.in);
     public static void main (String[] args)
     {
         driver();
